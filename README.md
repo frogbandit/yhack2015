@@ -1,3 +1,3 @@
 # yhack2015
 
-CENTRE
+CENTR
