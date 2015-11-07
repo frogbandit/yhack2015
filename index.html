@@ -1,1 +1,17 @@
-My Page
+{% extends "base.html" %}
+{% block title %}CENTR{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="medium-9 medium-centered columns">
+
+
+<h1><strong>CENTR</strong></h1>
+{% if api_data %}
+
+{% else %}
+
+{% endif %}
+
+  <!-- HTML CODE HERE -->
+{% endblock %}
