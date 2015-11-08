@@ -1,22 +1,165 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Centr - Find where to meet your friends</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
+
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo"><img src="../static/img/logo.png"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <div class="card">
+        <h4 class="header center orange-text">Find the Best Place to Meet</h4>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="center">
+              <h5 class="header col s12 light">Add the locations of your friends</h5>
+            </div>
+            <form class="col m12">
+              <div class="addresses">
+                <div class="row valign-wrapper no-mar-bot" id="form1">
+                  <div class="col m1 center">
+                    <div class="circle"></div>
+                  </div>  
+                  <div class="input-field col m11">
+                    <div class="address-wrap">
+                      <input id="address1" type="text">
+                      <label for="address1">Address 1</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row valign-wrapper no-mar-bot" id="form2">
+                  <div class="col m1 center">
+                    <div class="circle"></div>
+                  </div>  
+                  <div class="input-field col m11">
+                    <div class="address-wrap">
+                      <input id="address1" type="text">
+                      <label for="address1">Address 2</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="right" id="add-more">Add More</p>
+            </form>
+            <div class="center">
+              <h5 class="header col s12 light">Select meetup location type</h5>
+            </div>
+            <form class="col m12">
+              <div class="meetup-type col m12 center">
+                <div class="row">
+                  <p>
+                    <input type="checkbox" id="coffee" checked="checked">
+                    <label for="coffee">Coffee</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="restaurant">
+                    <label for="restaurant">Restaurant</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="park">
+                    <label for="park">Park</label>
+                  </p>
+                </div>
+              </div>
+              <div class="center" id="calculate-btn-wrap">
+                <a href="#" id="calculate-button" class="btn-large waves-effect waves-light orange">Calculate Meetup Spot</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="center">
+              <h5 class="header col s12 light">Location</h5>
+            </div>
+            <div>
+              <img src="http://www.advancedcustomfields.com/wp-content/uploads/2013/11/acf-google-maps-field-2.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students who built this service as part of Yhack 2015</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Josh Hellerstein, James Xue, Jennifer McCleary, Riancy Li - Credit to Holly Zhou
+      </div>
+      <div>
+Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and Lines graphic by <a href="http://appzgear.com">Appzgear</a> from <a href="http://www.flaticon.com/">Flaticon</a> are licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
+      </div>
+    </div>
+  </footer>
 
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../static/js/dynamic-buttons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <script>
+    $( document ).ready(function() {
+        $('.button-collapse').sideNav();
+        rand_color();
+    });
 
-    <body>
+    function rand_color(){
+         $('.circle').each(function(){
+          color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+          $(this).css('background', color);
+          });
+    }
+  </script>
 
-      <h1> dick </h1>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-    </body>
-  </html>
+  </body>
+</html>
