@@ -176,10 +176,11 @@ Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and
         $('.modal-trigger').leanModal();
         rand_color();
     });
-
+    var colorList = [];
     function rand_color(){
          $('.circle').each(function(){
           color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+          colorList.push(color);
           $(this).css('background', color);
           });
     }
@@ -238,6 +239,11 @@ function setupAutocomplete(autocomplete, inputs, i){
     var lng = place.geometry.location.lng();
     var myLatLng = {lat: lat, lng: lng};
     main_markers[idx] = new google.maps.Marker({
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        strokeColor: colorList[idx],
+        scale: 10
+      },
       position: myLatLng,
       map: map,
       title: 'Hello World!'
