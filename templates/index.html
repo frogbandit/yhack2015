@@ -15,11 +15,11 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo"><img src="../static/img/logo.png"></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li> <a href="https://venmo.com/?txn=pay&audience=public">Pay a Friend</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
+        <li> <a class="modal-trigger" href="#money-modal">Pay a Friend</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -130,26 +130,28 @@
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
+        <div class="col m4">
           <h5 class="white-text">Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students who built this service as part of Yhack 2015</p>
+          <p class="grey-text text-lighten-4">We are a team of college students who built this service as part of Yhack 2015.</p>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        <div class="col m4">
+          <div class="linkedin-wrap">
+            <h5 class="white-text">LinkedIn</h5>
+            <ul>
+              <li><a class="white-text" href="https://www.linkedin.com/in/joshhellerstein">Josh Hellerstein</a></li>
+              <li><a class="white-text" href="https://www.linkedin.com/in/jamesxue100">James Xue</a></li>
+              <li><a class="white-text" href="https://www.linkedin.com/in/jmccleary">Jennifer McCleary</a></li>
+              <li><a class="white-text" href="https://www.linkedin.com/in/riancyli97">Riancy Li</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
+        <div class="col m4">
+          <h5 class="white-text">Email us!</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="mailto:joshh@mit.edu">joshh@mit.edu</a></li>
+            <li><a class="white-text" href="mailto:james.xue@columbia.edu">james.xue@mit.edu</a></li>
+            <li><a class="white-text" href="mailto:mccleary@mit.edu">mccleary@mit.edu</a></li>
+            <li><a class="white-text" href="mailto:zl2475@columbia.edu">zl2475@columbia.edu</a></li>
           </ul>
         </div>
       </div>
@@ -164,7 +166,6 @@ Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and
     </div>
   </footer>
 
-
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../static/js/dynamic-buttons.js"></script>
@@ -172,6 +173,7 @@ Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and
   <script>
     $( document ).ready(function() {
         $('.button-collapse').sideNav();
+        $('.modal-trigger').leanModal();
         rand_color();
     });
 
@@ -270,7 +272,7 @@ function getLocations(type){
 
   var request = {
     location: {lat: center_lat, lng: center_lng},
-    radius: '500', 
+    radius: '1000', 
     types: type
   };
 
