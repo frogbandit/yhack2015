@@ -10,6 +10,7 @@ $("#add-more").click(function(){
 
     $('#form'+elemList[elemList.length-1]).each(function(){
           color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+          colorList.push(color);
           $(this).find('.circle').css('background', color);
     });
 });
