@@ -1,22 +1,356 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Centr - Find where to meet your friends</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
+
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo"><img src="../static/img/logo.png"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <div class="card">
+        <h4 class="header center orange-text">Find the Best Place to Meet</h4>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="center">
+              <h5 class="header col s12 light">Add the locations of your friends</h5>
+            </div>
 
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+            <form class="col m12">
+              <div class="addresses">
+                <div class="row valign-wrapper no-mar-bot" id="form1">
+                  <div class="col m1 center">
+                    <div class="circle"></div>
+                  </div>  
+                  <div class="input-field col m11">
+                    <div class="address-wrap">
+                      <input id="address1" class="controlsInput" placeholder="Enter your address" onFocus="geolocate()" type="text">
+                      <label for="address1">Address 1</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row valign-wrapper no-mar-bot" id="form2">
+                  <div class="col m1 center">
+                    <div class="circle"></div>
+                  </div>  
+                  <div class="input-field col m11">
+                    <div class="address-wrap">
+                      <input id="address2" class="controlsInput" placeholder="Enter your address" onFocus="geolocate()" type="text">
+                      <label for="address2">Address 2</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <input class="right" id="add-more" type="button" value="Add new location" class="styled-button-10"/>
+            </form>
 
-    <body>
 
-      <h1> Centr </h1>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-    </body>
-  </html>
+
+            <div class="center">
+              <h5 class="header col s12 light">Select meetup location type</h5>
+            </div>
+            <form class="col m12">
+              <div class="meetup-type col m12 center">
+                <div class="row">
+                  <p>
+                    <input type="checkbox" id="cafe" checked="checked">
+                    <label for="cafe">Cafe</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="restaurant">
+                    <label for="restaurant">Restaurant</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="park">
+                    <label for="park">Park</label>
+                  </p>
+                </div>
+              </div>
+              <div class="center" id="calculate-btn-wrap">
+                <a href="#" onclick="calculate()" id="calculate-button" class="btn-large waves-effect waves-light orange">Calculate Meetup Spot</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="center">
+              <h5 class="header col s12 light">Location</h5>
+            </div>
+            <div id="map"></div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class = "row">
+        <div class="col s12 m12">
+          <table id="results">
+            <thead>
+              <tr>
+                  <th data-field="name">Name</th>
+                  <th data-field="address">Address</th>
+                  <th data-field="rating">Rating</th>
+                  <th data-field="price_level">Price Level</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students who built this service as part of Yhack 2015</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Josh Hellerstein, James Xue, Jennifer McCleary, Riancy Li - Credit to Holly Zhou
+      </div>
+      <div>
+Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and Lines graphic by <a href="http://appzgear.com">Appzgear</a> from <a href="http://www.flaticon.com/">Flaticon</a> are licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../static/js/dynamic-buttons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <script>
+    $( document ).ready(function() {
+        $('.button-collapse').sideNav();
+        rand_color();
+    });
+
+    function rand_color(){
+         $('.circle').each(function(){
+          color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+          $(this).css('background', color);
+          });
+    }
+  </script>
+  <script>
+  // This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+var autocomplete = [];
+var map;
+var infowindow;
+var locations = [];
+var main_markers = [];
+var markers = [];
+var inputs = [];
+
+function initAutocomplete() {
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 41.3100, lng: -72.9236},
+      zoom: 14
+    });
+
+  inputs = document.getElementsByClassName("controlsInput");
+  for(var i = 0; i < inputs.length; i++) {  
+   setupAutocomplete(autocomplete,inputs,i);
+  }
+
+  $(document).ready(function(){
+    var count = 2;
+    $("#add-more").click(function(){
+        count++;
+        $("#inputlar").append("<input id='address" + count + "' class='controlsInput' type='text' placeholder='Enter your address' /> <br />");
+
+        // added
+        var newInput = [];
+        var newEl = document.getElementById('address' + count);
+        newInput.push(newEl);
+        setupAutocomplete(autocomplete, newInput, 0);
+
+        if (count === 7) {
+            $("#add-more").remove();
+        }
+    });    
+});
+}
+
+function setupAutocomplete(autocomplete, inputs, i){
+  // autocomplete[i] = new google.maps.places.Autocomplete(inputs[i])
+  autocomplete.push(new google.maps.places.Autocomplete(inputs[i]));
+  var idx = autocomplete.length - 1;
+  autocomplete[idx].bindTo('bounds', map);
+  google.maps.event.addListener(autocomplete[idx], 'place_changed', function() {
+  // google.maps.event.addListener(autocomplete[i], 'place_changed', function() {
+    var place = autocomplete[idx].getPlace();
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+    var myLatLng = {lat: lat, lng: lng};
+    main_markers[idx] = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+    console.log(lat,lng);
+    main_markers[idx].setMap(map);
+  });
+}
+
+function calculate(){
+  $('#results tbody > tr').remove();
+  removeMarkers();
+  for(var i = 0; i < autocomplete.length; i++) { 
+   locations.push(autocomplete[i].getPlace());
+  }
+  var center = obtainCenter(locations);
+  center_lat = center.lat();
+  center_lng = center.lng();
+  var params = [];
+  if ($('#cafe').is(':checked'))
+    params.push('cafe');
+  if ($('#restaurant').is(':checked'))
+    params.push('restaurant');
+  if ($('#park').is(':checked'))
+    params.push('park');
+  console.log(params);
+  getLocations(params);
+}
+
+function getLocations(type){
+  infowindow = new google.maps.InfoWindow();
+
+  var request = {
+    location: {lat: center_lat, lng: center_lng},
+    radius: '500', 
+    types: type
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        var place = results[i];
+        createMarker(results[i]);
+        name = results[i].name;
+        address = results[i].vicinity;
+        rating = 'N/A';
+        if (results[i].rating != undefined)
+          rating = results[i].rating;
+        price_level = 'N/A';
+        if (results[i].price_level != undefined)
+          price_level = results[i].price_level;
+        $("#results tbody").append('<tr><td>'+name+'</td><td>'+address+'</td><td>'+rating+'</td><td>'+price_level+'</td></tr><br>');
+      }
+      console.log(results);
+    }
+  }
+
+  function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location,
+      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+    });
+
+    markers.push(marker);
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(place.name);
+      infowindow.open(map, this);
+    });
+  }
+}
+
+function removeMarkers(){
+    for(i=0; i<markers.length; i++){
+        markers[i].setMap(null);
+    }
+}
+
+function obtainCenter(locations) {
+  var bound = new google.maps.LatLngBounds();
+
+  for (i = 0; i < locations.length; i++) {
+    bound.extend( new google.maps.LatLng(locations[i].geometry.location.lat(), locations[i].geometry.location.lng()));
+  }
+  return bound.getCenter();
+}
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      // autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+// [END region_geolocation]
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbebnQH25_Kuyk2dihcatibtfsSS7IVDI&signed_in=true&libraries=places&callback=initAutocomplete"
+          async defer></script>
+
+  <!-- <div id="map"></div> -->
+  </body>
+</html>
