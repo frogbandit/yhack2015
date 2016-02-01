@@ -43,7 +43,7 @@
                 <div class="row valign-wrapper no-mar-bot" id="form1">
                   <div class="col m1 center">
                     <div class="circle"></div>
-                  </div>  
+                  </div>
                   <div class="input-field col m11">
                     <div class="address-wrap">
                       <input id="address1" class="controlsInput" placeholder="Enter your address" onFocus="geolocate()" type="text">
@@ -54,7 +54,7 @@
                 <div class="row valign-wrapper no-mar-bot" id="form2">
                   <div class="col m1 center">
                     <div class="circle"></div>
-                  </div>  
+                  </div>
                   <div class="input-field col m11">
                     <div class="address-wrap">
                       <input id="address2" class="controlsInput" placeholder="Enter your address" onFocus="geolocate()" type="text">
@@ -101,7 +101,7 @@
               <h5 class="header col s12 light">Location</h5>
             </div>
             <div id="map"></div>
-            
+
           </div>
         </div>
       </div>
@@ -142,6 +142,7 @@
               <li><a class="white-text" href="https://www.linkedin.com/in/jamesxue100">James Xue</a></li>
               <li><a class="white-text" href="https://www.linkedin.com/in/jmccleary">Jennifer McCleary</a></li>
               <li><a class="white-text" href="https://www.linkedin.com/in/riancyli97">Riancy Li</a></li>
+              <li><a class="white-text" href="https://www.linkedin.com/in/arelin">Anton Relin</a></li>
             </ul>
           </div>
         </div>
@@ -152,13 +153,14 @@
             <li><a class="white-text" href="mailto:james.xue@columbia.edu">james.xue@columbia.edu</a></li>
             <li><a class="white-text" href="mailto:mccleary@mit.edu">mccleary@mit.edu</a></li>
             <li><a class="white-text" href="mailto:zl2475@columbia.edu">zl2475@columbia.edu</a></li>
+            <li><a class="white-text" href="mailto:zl2475@columbia.edu">arelin@sas.upenn.edu</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by Josh Hellerstein, James Xue, Jennifer McCleary, Riancy Li - Credit to Holly Zhou
+      Made by Josh Hellerstein, James Xue, Jennifer McCleary, Riancy Li, Anton Relin - Credit to Holly Zhou
       </div>
       <div>
 Big Mug Solid graphic by <a href="http://catalinfertu.com">Catalin Fertu</a> and Lines graphic by <a href="http://appzgear.com">Appzgear</a> from <a href="http://www.flaticon.com/">Flaticon</a> are licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
@@ -204,7 +206,7 @@ function initAutocomplete() {
     });
 
   inputs = document.getElementsByClassName("controlsInput");
-  for(var i = 0; i < inputs.length; i++) {  
+  for(var i = 0; i < inputs.length; i++) {
    setupAutocomplete(autocomplete,inputs,i);
   }
 
@@ -223,7 +225,7 @@ function initAutocomplete() {
         if (count === 7) {
             $("#add-more").remove();
         }
-    });    
+    });
 });
 }
 
@@ -256,7 +258,7 @@ function setupAutocomplete(autocomplete, inputs, i){
 function calculate(){
   $('#results tbody > tr').remove();
   removeMarkers();
-  for(var i = 0; i < autocomplete.length; i++) { 
+  for(var i = 0; i < autocomplete.length; i++) {
    locations.push(autocomplete[i].getPlace());
   }
   var center = obtainCenter(locations);
@@ -273,12 +275,42 @@ function calculate(){
   getLocations(params);
 }
 
+function getDistance(lat1, lon1, lat2, lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2 - lat1); // deg2rad below
+    var dLon = deg2rad(lon2 - lon1);
+    var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c * 1000; // Distance in m
+    return d;
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI / 180)
+}
+
 function getLocations(type){
   infowindow = new google.maps.InfoWindow();
-
+  distances = [];
+  for(var i = 0; i < locations.length; i++) {
+   distances.push(getDistance(locations[i].geometry.location.lat(), locations[i].geometry.location.lng(), center_lat, center_lng));
+  }
+  var max = Math.max(distances);
+  distanceR = max * (0.1);
+  if (distanceR < 1000)
+  {
+    distanceR = 1000; //set a minimum radius
+  }
+  if(distanceR > 50000)
+  {
+    distanceR = 49999; //Maximum distance for google if 50000 meters
+  }
   var request = {
     location: {lat: center_lat, lng: center_lng},
-    radius: '1000', 
+    radius: distanceR,
     types: type
   };
 
@@ -328,9 +360,9 @@ function removeMarkers(){
 
 function obtainCenter(locations) {
   var bound = new google.maps.LatLngBounds();
-
   for (i = 0; i < locations.length; i++) {
     bound.extend( new google.maps.LatLng(locations[i].geometry.location.lat(), locations[i].geometry.location.lng()));
+
   }
   return bound.getCenter();
 }
