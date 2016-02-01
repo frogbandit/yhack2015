@@ -356,7 +356,6 @@ function removeMarkers(){
 
 function obtainCenter(locations) {
   var bound = new google.maps.LatLngBounds();
-  var distance = 0;
   for (i = 0; i < locations.length; i++) {
     bound.extend( new google.maps.LatLng(locations[i].geometry.location.lat(), locations[i].geometry.location.lng()));
 
