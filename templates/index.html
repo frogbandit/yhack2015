@@ -299,14 +299,18 @@ function getLocations(type){
    distances.push(getDistance(locations[i].geometry.location.lat(), locations[i].geometry.location.lng(), center_lat, center_lng));
   }
   var max = Math.max(distances);
-  max = max * 1000; //Change kilometers to meters
-  if(max > 50000)
+  distanceR = max * (0.1);
+  if (distanceR < 1000)
   {
-    max = 49999; //Maximum distance for google if 50000 meters
+    distanceR = 1000; //set a minimum radius
+  }
+  if(distanceR > 50000)
+  {
+    distanceR = 49999; //Maximum distance for google if 50000 meters
   }
   var request = {
     location: {lat: center_lat, lng: center_lng},
-    radius: max,
+    radius: distanceR,
     types: type
   };
 
